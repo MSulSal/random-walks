@@ -8,22 +8,10 @@ class RandomWalker {
   }
 
   step() {
-    let choice = this.p5.floor(this.p5.random(4));
-
-    switch (choice) {
-      case 0:
-        this.x++;
-        break;
-      case 1:
-        this.x--;
-        break;
-      case 2:
-        this.y++;
-        break;
-      default:
-        this.y--;
-        break;
-    }
+    let xstep = this.p5.floor(this.p5.random(3)) - 1;
+    let ystep = this.p5.floor(this.p5.random(3)) - 1;
+    this.x += xstep;
+    this.y += ystep;
   }
 
   show() {
@@ -34,7 +22,7 @@ class RandomWalker {
 
 let walker;
 
-const RandomWalk = () => {
+const RandomWalkDiagonal = () => {
   // In setup, use the parent container’s width and set height proportional to width.
   const setup = (p5, canvasParentRef) => {
     const canvasWidth = canvasParentRef.offsetWidth;
@@ -62,4 +50,4 @@ const RandomWalk = () => {
   return <Sketch setup={setup} draw={draw} windowResized={windowResized} />;
 };
 
-export default RandomWalk;
+export default RandomWalkDiagonal;
