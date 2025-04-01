@@ -2,6 +2,7 @@ import React from "react";
 import RandomWalk from "./components/RandomWalk";
 import RandomWalkDiagonal from "./components/RandomWalkDiagonal";
 import RandomWalkContinuous from "./components/RandomWalkContinuous";
+import RandomWalkColorful from "./components/RandomWalkColorful";
 
 const App = () => {
   return (
@@ -12,8 +13,13 @@ const App = () => {
         <RandomWalk />
         <p>Random Walk with Diagonal Steps</p>
         <RandomWalkDiagonal />
-        <p>Random Walk with Continuous range in Step Sizes</p>
+        <p>Random Walk with Continuous Range in Step Sizes</p>
         <RandomWalkContinuous />
+        <p>
+          Random Walk with Random Colors, Larger and Variable Range, and
+          Reflection
+        </p>
+        <RandomWalkColorful />
       </div>
     </div>
   );
