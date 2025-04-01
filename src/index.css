@@ -30,7 +30,6 @@ body {
 
 html,
 body {
-  overscroll-behavior-y: none; /* Prevent vertical pull-to-refresh */
-  /* Optionally disable touch actions if you don't need scrolling */
-  touch-action: none;
+  overscroll-behavior-y: none; /* Prevent pull-to-refresh */
+  /* Remove touch-action if you need scrolling */
 }
