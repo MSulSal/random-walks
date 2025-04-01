@@ -27,3 +27,10 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+html,
+body {
+  overscroll-behavior-y: none; /* Prevent vertical pull-to-refresh */
+  /* Optionally disable touch actions if you don't need scrolling */
+  touch-action: none;
+}
