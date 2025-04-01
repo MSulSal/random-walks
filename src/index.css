@@ -27,9 +27,3 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-html,
-body {
-  overscroll-behavior-y: none; /* Prevent pull-to-refresh */
-  /* Remove touch-action if you need scrolling */
-}
