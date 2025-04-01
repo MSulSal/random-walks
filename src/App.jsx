@@ -3,6 +3,7 @@ import RandomWalk from "./components/RandomWalk";
 import RandomWalkDiagonal from "./components/RandomWalkDiagonal";
 import RandomWalkContinuous from "./components/RandomWalkContinuous";
 import RandomWalkColorful from "./components/RandomWalkColorful";
+import RandomWalkSouthEast from "./components/RandomWalkSouthEast";
 
 const App = () => {
   return (
@@ -16,10 +17,12 @@ const App = () => {
         <p>Random Walk with Continuous Range in Step Sizes</p>
         <RandomWalkContinuous />
         <p>
-          Random Walk with Random Colors, Larger and Variable Range, and
-          Reflection
+          Random Walk with Random Colors, Larger and Variable Step Size Range,
+          Stroke Width, and Reflection
         </p>
         <RandomWalkColorful />
+        <p>Random Walk with greater tendency to go right and downwards</p>
+        <RandomWalkSouthEast />
       </div>
     </div>
   );
