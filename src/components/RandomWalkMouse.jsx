@@ -1,29 +1,33 @@
 import Sketch from "react-p5";
 
 class RandomWalker {
-  constructor(p5, x, y, cw, ch) {
+  constructor(p5, x, y) {
     this.p5 = p5;
     this.x = x;
     this.y = y;
     this.prevx = x;
     this.prevy = y;
-    this.cw = cw;
-    this.ch = ch;
   }
 
   step() {
     this.prevx = this.x;
     this.prevy = this.y;
     let coin = this.p5.random(1);
-    let xstep =
-      coin > 0.5 && this.p5.mouseX - this.cw / 2 < this.cw && this.p5.mouseX > 0
-        ? this.p5.mouseX - this.x
-        : this.p5.random(-1, 1) * 10;
+    let xstep, ystep;
 
-    let ystep =
-      coin > 0.5 && this.p5.mouseY - this.ch / 2 < this.ch && this.p5.mouseY > 0
-        ? this.p5.mouseY - this.y
-        : this.p5.random(-1, 1) * 10;
+    if (
+      coin > 0.5 &&
+      this.p5.mouseX >= 0 &&
+      this.p5.mouseX <= this.p5.width &&
+      this.p5.mouseY >= 0 &&
+      this.p5.mouseY <= this.p5.height
+    ) {
+      xstep = this.p5.mouseX - this.x;
+      ystep = this.p5.mouseY - this.y;
+    } else {
+      xstep = this.p5.random(-1, 1) * 10;
+      ystep = this.p5.random(-1, 1) * 10;
+    }
 
     if (this.x + xstep < 0 || this.x + xstep > this.p5.width) {
       xstep = -xstep;
@@ -57,13 +61,7 @@ const RandomWalkMouse = () => {
     p5.background(255);
     p5.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
 
-    walker = new RandomWalker(
-      p5,
-      p5.width / 2,
-      p5.height / 2,
-      canvasWidth,
-      canvasHeight
-    );
+    walker = new RandomWalker(p5, p5.width / 2, p5.height / 2);
   };
 
   // When the window is resized, recalculate the width and height.
