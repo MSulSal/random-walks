@@ -4,6 +4,7 @@ import RandomWalkDiagonal from "./components/RandomWalkDiagonal";
 import RandomWalkContinuous from "./components/RandomWalkContinuous";
 import RandomWalkColorful from "./components/RandomWalkColorful";
 import RandomWalkSouthEast from "./components/RandomWalkSouthEast";
+import RandomWalkMouse from "./components/RandomWalkMouse";
 
 const App = () => {
   return (
@@ -23,6 +24,8 @@ const App = () => {
         <RandomWalkColorful />
         <p>Random Walk with greater tendency to go right and downwards</p>
         <RandomWalkSouthEast />
+        <p>Random Walk with 50% chance of following cursor</p>
+        <RandomWalkMouse />
       </div>
     </div>
   );
