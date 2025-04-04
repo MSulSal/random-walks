@@ -5,6 +5,7 @@ import RandomWalkContinuous from "./components/RandomWalkContinuous";
 import RandomWalkColorful from "./components/RandomWalkColorful";
 import RandomWalkSouthEast from "./components/RandomWalkSouthEast";
 import RandomWalkMouse from "./components/RandomWalkMouse";
+import RandomWalkNormal from "./components/RandomWalkNormal";
 
 const App = () => {
   return (
@@ -36,6 +37,13 @@ const App = () => {
       <div className="canvas-container">
         <p>Random Walk with 50% chance of following cursor</p>
         <RandomWalkMouse />
+      </div>
+      <div className="canvas-container">
+        <p>
+          Random Walk with steps based on Gaussian distribution, sliders for
+          step size and stroke width
+        </p>
+        <RandomWalkNormal />
       </div>
     </div>
   );

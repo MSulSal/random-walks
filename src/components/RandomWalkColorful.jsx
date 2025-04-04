@@ -49,21 +49,13 @@ const RandomWalkColorful = () => {
     walker = new RandomWalker(p5, p5.width / 2, p5.height / 2);
   };
 
-  // When the window is resized, recalculate the width and height.
-  const windowResized = (p5) => {
-    const canvasParent = p5.canvas.parentNode;
-    const newWidth = canvasParent.offsetWidth;
-    const newHeight = newWidth * 0.5;
-    p5.resizeCanvas(newWidth, newHeight);
-  };
-
   // Draw function to render the sketch
   const draw = () => {
     walker.step();
     walker.show();
   };
 
-  return <Sketch setup={setup} draw={draw} windowResized={windowResized} />;
+  return <Sketch setup={setup} draw={draw} />;
 };
 
 export default RandomWalkColorful;
