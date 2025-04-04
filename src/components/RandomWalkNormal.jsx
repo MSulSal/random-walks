@@ -57,7 +57,7 @@ const RandomWalkColorful = () => {
     stepLabel.parent(canvasParentRef);
     stepSlider = p5.createSlider(1, 50, 10, 1);
     stepSlider.parent(canvasParentRef);
-    strokeLabel = p5.createDiv("Step Size:");
+    strokeLabel = p5.createDiv("Stroke Width:");
     strokeLabel.style("font-size", "16px");
     strokeLabel.style("margin-top", "10px");
     strokeLabel.parent(canvasParentRef);
