@@ -37,10 +37,6 @@ const App = () => {
         <p>Random Walk with 50% chance of following cursor</p>
         <RandomWalkMouse />
       </div>
-      <div className="canvas-container">
-        <p>Random Walk with 50% chance of following cursor</p>
-        <RandomWalkMouse />
-      </div>
     </div>
   );
 };
