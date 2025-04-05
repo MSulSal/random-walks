@@ -1,20 +1,30 @@
 import Sketch from "react-p5";
 
-let strokeSlider, strokeLabel;
-
 class RandomWalker {
-  constructor(p5, x, y, strokeSlider) {
+  constructor(p5, x, y) {
     this.p5 = p5;
     this.x = x;
+    this.prevX = x;
+    this.prevY = y;
     this.y = y;
-    this.strokeSlider = strokeSlider;
     this.tx = 0;
     this.ty = 10000;
   }
 
   step() {
-    this.x = this.p5.map(this.p5.noise(this.tx), 0, 1, 0, this.p5.width);
-    this.y = this.p5.map(this.p5.noise(this.ty), 0, 1, 0, this.p5.height);
+    this.prevX = this.x;
+    this.prevY = this.y;
+    let xstep = this.p5.map(this.p5.noise(this.tx), 0, 1, -20, 20);
+    let ystep = this.p5.map(this.p5.noise(this.ty), 0, 1, -20, 20);
+    if (this.x + xstep < 0 || this.x + xstep > this.p5.width) {
+      xstep = -xstep;
+    }
+    if (this.y + ystep < 0 || this.y + ystep > this.p5.height) {
+      ystep = -ystep;
+    }
+    this.x += xstep;
+    this.y += ystep;
+
     this.tx += 0.01;
     this.ty += 0.01;
   }
@@ -26,27 +36,22 @@ class RandomWalker {
       this.p5.random(255),
       10
     );
-    this.p5.strokeWeight(this.strokeSlider.value());
+    this.p5.strokeWeight(this.p5.map(this.p5.noise(this.tx), 0, 1, 1, 100));
+    this.p5.line(this.prevX, this.prevY, this.x, this.y);
     this.p5.point(this.x, this.y);
   }
 }
 
 let walker;
 
-const RandomWalkPerlin = () => {
+const RandomWalkPerlinStep = () => {
   // In setup, use the parent container’s width and set height proportional to width.
   const setup = (p5, canvasParentRef) => {
     const canvasWidth = canvasParentRef.offsetWidth;
     const canvasHeight = canvasWidth * 0.5; // 50% of width (adjust as needed)
     p5.background(255);
     p5.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
-    strokeLabel = p5.createDiv("Stroke Width:");
-    strokeLabel.style("font-size", "16px");
-    strokeLabel.style("margin-top", "10px");
-    strokeLabel.parent(canvasParentRef);
-    strokeSlider = p5.createSlider(1, 50, 50, 1);
-    strokeSlider.parent(canvasParentRef);
-    walker = new RandomWalker(p5, p5.width / 2, p5.height / 2, strokeSlider);
+    walker = new RandomWalker(p5, p5.width / 2, p5.height / 2);
   };
 
   // Draw function to render the sketch
@@ -58,4 +63,4 @@ const RandomWalkPerlin = () => {
   return <Sketch setup={setup} draw={draw} />;
 };
 
-export default RandomWalkPerlin;
+export default RandomWalkPerlinStep;

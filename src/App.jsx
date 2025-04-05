@@ -8,6 +8,7 @@ import RandomWalkMouse from "./components/RandomWalkMouse";
 import RandomWalkNormal from "./components/RandomWalkNormal";
 import RandomWalkCustom from "./components/RandomWalkCustom";
 import RandomWalkPerlin from "./components/RandomWalkPerlin";
+import RandomWalkPerlinStep from "./components/RandomWalkPerlinStep";
 
 const App = () => {
   return (
@@ -54,6 +55,13 @@ const App = () => {
       <div className="canvas-container">
         <p>Random Walk that follows Perlin Noise</p>
         <RandomWalkPerlin />
+      </div>
+      <div className="canvas-container">
+        <p>
+          Random Walk with step size and stroke weight determined by Perlin
+          Noise
+        </p>
+        <RandomWalkPerlinStep />
       </div>
     </div>
   );
