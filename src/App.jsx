@@ -6,6 +6,7 @@ import RandomWalkColorful from "./components/RandomWalkColorful";
 import RandomWalkSouthEast from "./components/RandomWalkSouthEast";
 import RandomWalkMouse from "./components/RandomWalkMouse";
 import RandomWalkNormal from "./components/RandomWalkNormal";
+import RandomWalkCustom from "./components/RandomWalkCustom";
 
 const App = () => {
   return (
@@ -44,6 +45,10 @@ const App = () => {
           step size and stroke width
         </p>
         <RandomWalkNormal />
+      </div>
+      <div className="canvas-container">
+        <p>Random Walk that follows quadratic probability distribution</p>
+        <RandomWalkCustom />
       </div>
     </div>
   );

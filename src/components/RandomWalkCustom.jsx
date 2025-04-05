@@ -14,10 +14,37 @@ class RandomWalker {
     this.strokeSlider = strokeSlider;
   }
 
+  coin() {
+    let toss = this.p5.random(1);
+    if (toss < 0.5) {
+      return 1;
+    }
+    return -1;
+  }
+
+  customDist() {
+    let step;
+    while (true) {
+      let r1 = this.p5.random(1) * 100;
+      let probability = this.p5.sq(r1) * 100;
+      let r2 = this.p5.random(1);
+      if (r2 < this.p5.abs(probability)) {
+        step = r1;
+        break;
+      }
+    }
+    return step * this.coin();
+  }
+
   step() {
     const stepSliderVal = this.stepSlider.value();
-    let xstep = this.p5.randomGaussian(0) * stepSliderVal;
-    let ystep = this.p5.randomGaussian(0) * stepSliderVal;
+    let xstep = this.customDist();
+    let ystep = this.customDist();
+    // console.log(this.customDist());
+    xstep =
+      this.p5.abs(xstep) < stepSliderVal ? xstep : stepSliderVal * this.coin();
+    ystep =
+      this.p5.abs(ystep) < stepSliderVal ? ystep : stepSliderVal * this.coin();
     this.prevx = this.x;
     this.prevy = this.y;
     if (this.x + xstep < 0 || this.x + xstep > this.p5.width) {
@@ -44,18 +71,18 @@ class RandomWalker {
 
 let walker;
 
-const RandomWalkColorful = () => {
+const RandomWalkCustom = () => {
   // In setup, use the parent container’s width and set height proportional to width.
   const setup = (p5, canvasParentRef) => {
     const canvasWidth = canvasParentRef.offsetWidth;
     const canvasHeight = canvasWidth * 0.5; // 50% of width (adjust as needed)
     p5.background(255);
     p5.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
-    stepLabel = p5.createDiv("Mean Step Size:");
+    stepLabel = p5.createDiv("Max Step Size:");
     stepLabel.style("font-size", "16px");
     stepLabel.style("margin-top", "10px");
     stepLabel.parent(canvasParentRef);
-    stepSlider = p5.createSlider(1, 50, 10, 1);
+    stepSlider = p5.createSlider(1, 100, 10, 1);
     stepSlider.parent(canvasParentRef);
     strokeLabel = p5.createDiv("Stroke Width:");
     strokeLabel.style("font-size", "16px");
@@ -81,4 +108,4 @@ const RandomWalkColorful = () => {
   return <Sketch setup={setup} draw={draw} />;
 };
 
-export default RandomWalkColorful;
+export default RandomWalkCustom;
