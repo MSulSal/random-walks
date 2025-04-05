@@ -7,6 +7,7 @@ import RandomWalkSouthEast from "./components/RandomWalkSouthEast";
 import RandomWalkMouse from "./components/RandomWalkMouse";
 import RandomWalkNormal from "./components/RandomWalkNormal";
 import RandomWalkCustom from "./components/RandomWalkCustom";
+import RandomWalkPerlin from "./components/RandomWalkPerlin";
 
 const App = () => {
   return (
@@ -49,6 +50,10 @@ const App = () => {
       <div className="canvas-container">
         <p>Random Walk that follows quadratic probability distribution</p>
         <RandomWalkCustom />
+      </div>
+      <div className="canvas-container">
+        <p>Random Walk that follows Perlin Noise</p>
+        <RandomWalkPerlin />
       </div>
     </div>
   );
