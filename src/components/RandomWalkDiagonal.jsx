@@ -16,7 +16,7 @@ class RandomWalker {
         : 0;
     this.y +=
       this.y + ystep * 10 > 0 && this.y + ystep * 10 < this.p5.height
-        ? this.y + ystep
+        ? this.y + ystep * 10
         : 0;
   }
 
