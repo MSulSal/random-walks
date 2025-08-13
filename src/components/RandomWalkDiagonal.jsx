@@ -11,11 +11,11 @@ class RandomWalker {
     let xstep = this.p5.floor(this.p5.random(3)) - 1;
     let ystep = this.p5.floor(this.p5.random(3)) - 1;
     this.x +=
-      this.x + xstep * 10 > 0 && this.x + xstep < this.p5.width
+      this.x + xstep * 10 > 0 && this.x + xstep * 10 < this.p5.width
         ? xstep * 10
         : 0;
     this.y +=
-      this.y + ystep * 10 > 0 && this.y + ystep < this.p5.height
+      this.y + ystep * 10 > 0 && this.y + ystep * 10 < this.p5.height
         ? this.y + ystep
         : 0;
   }
