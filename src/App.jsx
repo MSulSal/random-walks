@@ -1,6 +1,7 @@
 import React from "react";
 import RandomWalk from "./components/RandomWalk";
 import RandomWalkDiagonal from "./components/RandomWalkDiagonal";
+import RandomWalkRange from "./components/RandomWalkRange";
 import RandomWalkContinuous from "./components/RandomWalkContinuous";
 import RandomWalkColorful from "./components/RandomWalkColorful";
 import RandomWalkSouthEast from "./components/RandomWalkSouthEast";
@@ -21,6 +22,10 @@ const App = () => {
       <div className="canvas-container">
         <p>Random Walk with Diagonal Steps</p>
         <RandomWalkDiagonal />
+      </div>
+      <div className="canvas-container">
+        <p>Random Walk with Discrete Range in Step Sizes</p>
+        <RandomWalkRange />
       </div>
       <div className="canvas-container">
         <p>Random Walk with Continuous Range in Step Sizes</p>

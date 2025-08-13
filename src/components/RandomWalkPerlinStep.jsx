@@ -34,7 +34,7 @@ class RandomWalker {
       this.p5.random(255),
       this.p5.random(255),
       this.p5.random(255),
-      10
+      50
     );
     this.p5.strokeWeight(this.p5.map(this.p5.noise(this.tx), 0, 1, 1, 100));
     this.p5.line(this.prevX, this.prevY, this.x, this.y);

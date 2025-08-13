@@ -15,7 +15,8 @@ class RandomWalker {
   }
 
   show() {
-    this.p5.stroke(0);
+    this.p5.stroke(0, 255, 0);
+    this.p5.strokeWeight(5);
     this.p5.point(this.x, this.y);
   }
 }

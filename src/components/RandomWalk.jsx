@@ -12,22 +12,23 @@ class RandomWalker {
 
     switch (choice) {
       case 0:
-        this.x++;
+        this.x += this.x + 10 > this.p5.width ? 0 : 10;
         break;
       case 1:
-        this.x--;
+        this.x -= this.x - 10 < 0 ? 0 : 10;
         break;
       case 2:
-        this.y++;
+        this.y += this.y + 10 > this.p5.height ? 0 : 10;
         break;
       default:
-        this.y--;
+        this.y -= this.y - 10 < 0 ? 0 : 10;
         break;
     }
   }
 
   show() {
-    this.p5.stroke(0);
+    this.p5.stroke(0, 255, 0);
+    this.p5.strokeWeight(5);
     this.p5.point(this.x, this.y);
   }
 }
@@ -39,7 +40,6 @@ const RandomWalk = () => {
   const setup = (p5, canvasParentRef) => {
     const canvasWidth = canvasParentRef.offsetWidth;
     const canvasHeight = canvasWidth * 0.5; // 50% of width (adjust as needed)
-    p5.background(255);
     p5.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
 
     walker = new RandomWalker(p5, p5.width / 2, p5.height / 2);

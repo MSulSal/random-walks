@@ -10,12 +10,19 @@ class RandomWalker {
   step() {
     let xstep = this.p5.random(-1, 1) * 5;
     let ystep = this.p5.random(-1, 1) * 5;
-    this.x += xstep;
-    this.y += ystep;
+    this.x +=
+      this.x + xstep * 10 > 0 && this.x + xstep * 10 < this.p5.width
+        ? xstep * 10
+        : 0;
+    this.y +=
+      this.y + ystep * 10 > 0 && this.y + ystep * 10 < this.p5.height
+        ? ystep * 10
+        : 0;
   }
 
   show() {
-    this.p5.stroke(0);
+    this.p5.stroke(0, 255, 0);
+    this.p5.strokeWeight(5);
     this.p5.point(this.x, this.y);
   }
 }
